@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!--    验证码的配置-->
+    <package name="code" extends="struts-default" namespace="/code">
+        <action name="code" class="wangwei.util.ValidationCodeAction"></action>
+    </package>
+    <!--登陆配置-->
+    <package name="load" extends="struts-default" namespace="/load">
+        <action name="login" class="wangwei.controller.LoadAction" method="Login">
+            <result name="success" type="redirect">/employee/findbypageall</result>
+            <result name="error">/jsp/error.jsp</result>
+            <result name="error2">/jsp/error2.jsp</result>
+        </action>
+        <action name="regist" class="wangwei.controller.LoadAction" method="Regist">
+            <result name="success">/ems1.0-绿色版/login.jsp</result>
+            <result name="error">/ems1.0-绿色版/regist.jsp</result>
+            <result name="error2">/jsp/error2.jsp</result>
+        </action>
+        <action name="logout" class="wangwei.controller.LoadAction" method="Logout">
+            <result name="success">/ems1.0-绿色版/login.jsp</result>
+        </action>
+    </package>
+    <!--员工信息配置-->
+    <package name="employee" extends="struts-default" namespace="/employee">
+        <action name="findall" class="wangwei.controller.EmployeeAction" method="findAll">
+            <result name="success">/ems1.0-绿色版/emplist.jsp</result>
+        </action>
+        <action name="addall" class="wangwei.controller.EmployeeAction" method="addAll">
+            <result name="success" type="redirect">/employee/findbypageall</result>
+        </action>
+        <action name="delall" class="wangwei.controller.EmployeeAction" method="delAll">
+            <result name="success" type="redirect">/employee/findbypageall</result>
+        </action>
+        <action name="changeall" class="wangwei.controller.EmployeeAction" method="changeAll">
+            <result name="success" type="redirect">/employee/findbypageall</result>
+        </action>
+<!--        分页查询首页员工信息-->
+        <action name="findbypageall" class="wangwei.controller.EmployeeAction" method="findByPageAll">
+            <result name="success">/ems1.0-绿色版/emplist.jsp</result>
+        </action>
+<!--        分页查询上下页员工信息-->
+        <action name="findbypage" class="wangwei.controller.EmployeeAction" method="findByPage">
+            <result name="success">/ems1.0-绿色版/emplist.jsp</result>
+        </action>
+    </package>
+
+</struts>
